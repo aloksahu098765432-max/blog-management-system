@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Blog App</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    
+</head>
+<body>
+
+<a href="/register">Register</a>
+<a href="/login">Login</a>
+<a href="/logout">Logout</a>
+
+<hr>
+
+{% if session.user %}
+<p>Welcome {{ session.user }}</p>
+{% endif %}
+
+<a href="/create_post">Create Post</a>
+
+<hr>
+
+<h1>Blog Platform</h1>
+
+<div class="container">
+
+{% for post in posts %}
+
+<div class="post">
+
+    <h2>{{ post[1] }}</h2>
+
+    <p>{{ post[2] }}</p>
+
+    <p><b>Author:</b> {{ post[3] }}</p>
+
+    <a href="/post/{{ post[0] }}">
+        <button>View Post</button>
+    </a>
+
+    <a href="/edit_post/{{ post[0] }}">
+        <button>Edit</button>
+    </a>
+
+    <a href="/delete_post/{{ post[0] }}">
+        <button>Delete</button>
+    </a>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+</body>
+</html>

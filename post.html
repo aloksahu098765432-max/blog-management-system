@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h1>{{ post[1] }}</h1>
+
+<p>{{ post[2] }}</p>
+
+<p><b>Author:</b> {{ post[3] }}</p>
+
+<hr>
+
+<h2>Comments</h2>
+
+{% for comment in comments %}
+
+<p>
+    <b>{{ comment[2] }}</b> :
+    {{ comment[3] }}
+</p>
+
+{% endfor %}
+
+<hr>
+
+<form method="POST"
+action="/add_comment/{{ post[0] }}">
+
+<textarea
+name="comment"
+rows="4"
+cols="40"
+required></textarea>
+
+<br><br>
+
+<button type="submit">
+Add Comment
+</button>
+
+</form>
+
+<br>
+
+<a href="/">Back to Home</a>
+
+</body>
+</html>
